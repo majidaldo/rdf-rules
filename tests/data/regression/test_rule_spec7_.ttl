@@ -2,20 +2,20 @@
 @prefix ns2: <urn:rdf-rules:meta:> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
-[] a rdf:Statement ;
-    rdf:object "id" ;
-    rdf:predicate ns1:id ;
-    rdf:subject _:Nc65a1c4629244c41b79a96b6c0c86c85 ;
-    ns2:name "test" .
-
 [] ns2:name "test" .
 
 [] a rdf:Statement ;
     rdf:object "v" ;
     rdf:predicate ns1:p ;
-    rdf:subject _:Nc65a1c4629244c41b79a96b6c0c86c85 ;
+    rdf:subject _:N02961de6cd514b90a57de70fbe951ee0 ;
     ns2:name "test" .
 
-_:Nc65a1c4629244c41b79a96b6c0c86c85 ns1:id "id" ;
+[] a rdf:Statement ;
+    rdf:object "id" ;
+    rdf:predicate ns1:id ;
+    rdf:subject _:N02961de6cd514b90a57de70fbe951ee0 ;
+    ns2:name "test" .
+
+_:N02961de6cd514b90a57de70fbe951ee0 ns1:id "id" ;
     ns1:p "v" .
 

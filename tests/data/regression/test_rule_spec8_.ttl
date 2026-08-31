@@ -1,44 +1,29 @@
-@prefix ns1: <urn:rdf-rules:meta:> .
-@prefix ns2: <urn:rdf-rules:data:> .
+@prefix ns1: <urn:rdf-rules:data:> .
+@prefix ns2: <urn:rdf-rules:meta:> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
 [] a rdf:Statement ;
     rdf:object "null" ;
-    rdf:predicate ns2:null ;
-    rdf:subject _:Nd267d0cbc5c04738879adf34f69f1e86 ;
-    ns1:name "test" .
-
-[] a rdf:Statement ;
-    rdf:object "v" ;
-    rdf:predicate ns2:p ;
-    rdf:subject _:Nd267d0cbc5c04738879adf34f69f1e86 ;
-    ns1:additionalk "additionalv" .
+    rdf:predicate ns1:null ;
+    rdf:subject _:Naefc634c6f08406b9a32423bcd10c9fd ;
+    ns2:additionalk "additionalv" ;
+    ns2:name "test" .
 
 [] a rdf:Statement ;
     rdf:object "id" ;
-    rdf:predicate ns2:id ;
-    rdf:subject _:Nd267d0cbc5c04738879adf34f69f1e86 ;
-    ns1:name "test" .
+    rdf:predicate ns1:id ;
+    rdf:subject _:Naefc634c6f08406b9a32423bcd10c9fd ;
+    ns2:additionalk "additionalv" ;
+    ns2:name "test" .
 
 [] a rdf:Statement ;
     rdf:object "v" ;
-    rdf:predicate ns2:p ;
-    rdf:subject _:Nd267d0cbc5c04738879adf34f69f1e86 ;
-    ns1:name "test" .
+    rdf:predicate ns1:p ;
+    rdf:subject _:Naefc634c6f08406b9a32423bcd10c9fd ;
+    ns2:additionalk "additionalv" ;
+    ns2:name "test" .
 
-[] a rdf:Statement ;
-    rdf:object "null" ;
-    rdf:predicate ns2:null ;
-    rdf:subject _:Nd267d0cbc5c04738879adf34f69f1e86 ;
-    ns1:additionalk "additionalv" .
-
-[] a rdf:Statement ;
-    rdf:object "id" ;
-    rdf:predicate ns2:id ;
-    rdf:subject _:Nd267d0cbc5c04738879adf34f69f1e86 ;
-    ns1:additionalk "additionalv" .
-
-_:Nd267d0cbc5c04738879adf34f69f1e86 ns2:id "id" ;
-    ns2:null "null" ;
-    ns2:p "v" .
+_:Naefc634c6f08406b9a32423bcd10c9fd ns1:id "id" ;
+    ns1:null "null" ;
+    ns1:p "v" .
 

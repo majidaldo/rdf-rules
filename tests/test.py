@@ -30,9 +30,28 @@ def unstar(ts):
     from rdf_engine.data import reification
     return reification.standard(ts)
 
-def serialize(ts):
+def anonids(ts):
+    _ = ts
+    from rdf_rules.prefixes import prefixes
+    p = prefixes['anon.id']
+    from pyoxigraph import BlankNode as BN
+    from functools import cache
+    @cache  # to not make a new bn for each n
+    def mka(n):
+        uri = n.value
+        if uri.startswith(p) or (uri.startswith('urn:anon:hash:')):
+            return BN()
+        else: return n
+    from pyoxigraph import Triple as T
+    _ = (T(mka( t.subject), t.predicate,    t.object) for  t in _)
+    _ = (T(     t.subject,  t.predicate,mka(t.object)) for t in _)
+    yield from _
+
+
+def serialize(ts, anon=True):
     _ = ts
     _ = unstar(_)
+    if anon: _ = anonids(_)
     from rdflib import Graph
     g = Graph()
     sep = '.\n'
@@ -112,7 +131,7 @@ def test_engine(remove_null):
         rules=[(data_dir / 'test.ttl', {'additional_params': {'path': 'fakedata.mapping.rq' } } ) ],
         )
 
-    wonulls, nulls = 346, 756
+    wonulls, nulls = 475, 1014
     assert(wonulls < nulls)
     if remove_null == True:
         assert(len(db) == wonulls) # good enough i guess b/c i tested rules separately
@@ -120,5 +139,3 @@ def test_engine(remove_null):
         assert(len(db) == nulls)
 
     # so, no data regression
-
-

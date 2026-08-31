@@ -53,6 +53,7 @@ class BaseMeta(Base):
         _ = self.params()
         from json2rdf import json2rdf as j2r
         _ = j2r(_, subject_id_keys={}, # doesn't matter b/c subject will be stripped
+                 object_id_keys={}, 
                 key_prefix=('p', prefixes['meta'] ),
                 )
         from pyoxigraph import parse, RdfFormat

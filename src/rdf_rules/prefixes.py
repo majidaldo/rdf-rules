@@ -30,7 +30,7 @@ def make(prefixes:type ={}, base='rdf-rules') -> type:
     prefixes = {}
     for p, n in _.copy().items():
         if not p.endswith('.id'):
-            prefixes[p+'.id'] = n+'id'
+            prefixes[p+'.id'] = n+'id:'
         prefixes[p] = n
     return prefixes
 

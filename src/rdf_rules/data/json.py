@@ -9,13 +9,23 @@ class path:
     type = Annotated[Path, Is[lambda p: p.suffix in {'.json', '.geojson'}]]
 
 
+json2rdf_unique_options = {
+    # make no assumptions about data
+    # no data uniqueness.
+    'subject_id_keys': {},
+    # but gives a chance to extract an identifier for a 'proper' named node
+    'deanon':True,
+    # no assumption about refs
+    'object_id_keys':{}
+}
+
 from .base import BaseMeta
 class JSON(BaseMeta):
     from ..prefixes import prefixes
     def __init__(self, json: Callable[[], Str | dict] | Str | dict | list,
             name: str | None = None, *,
             data_prefix=prefixes['data'],
-            data_id_prefix=prefixes['data.id'],
+            data_id_prefix=prefixes['anon.id'],
             json2rdf_options = {},
             additional_params = {},
             null_values = {},
@@ -24,7 +34,8 @@ class JSON(BaseMeta):
         self.name = name if name else str(id(json))
         self.data_prefix = data_prefix
         self.data_id_prefix = data_id_prefix
-        self.json2rdf_options = json2rdf_options
+        self.json2rdf_options = {**json2rdf_unique_options,
+                    **json2rdf_options}  #can override
         self.additional_params = additional_params
         self.null_values = null_values
 
@@ -43,7 +54,6 @@ class JSON(BaseMeta):
         _ = self.json()
         from json2rdf import json2rdf as j2r
         _ = j2r(_,
-                subject_id_keys = {}, # the id is the row number
                 key_prefix = ('data', self.data_prefix),
                 id_prefix= ('data.id',self.data_id_prefix ),
                 **self.json2rdf_options)
@@ -61,7 +71,7 @@ class JsonReader(BaseMeta):
     def __init__(self, path: path.type,
             reading_args: dict = {},
             data_prefix=prefixes['data'],
-            data_id_prefix=prefixes['data.id'],
+            data_id_prefix=prefixes['anon.id'],
             json2rdf_options = {},
             additional_params = {},
             null_values = {},

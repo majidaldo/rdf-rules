@@ -19,6 +19,16 @@ where `?mp` and `?mo` [correspond to simple (key,value) pairs of metadata](./src
 - Mappings are in the form of SPARQL constructs
 stored as files with a `.mapping.rq` extension (can also be `.mapping.sparql`).
 - Each (specified) ontology will be processed separately.
+- By default, no assumption about data identifier uniqueness is made:
+A random unique identifier node,
+with the default 'anon.id' prefix 'urn:rdf-rules:anon:id:',
+will be created to identify data (table 'rows' or json data).
+It is the user's responsibility to make 'nice' named nodes:
+This can be by making a 'rule' to SPARQL `construct` nodes
+or by specifying 
+`json2rdf_options={'subject_id_keys': {'id'}, id_prefix=(..., ...) }`
+argument for Table or JSON data rules.
+With these options, nodes can be made unique over all data.
 
 # Usage
 

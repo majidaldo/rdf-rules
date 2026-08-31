@@ -17,7 +17,7 @@ class Table(BaseMeta):
     def __init__(self, df: Callable[[], pd.DataFrame] | pd.DataFrame,
             name: str | None = None, *,
             data_prefix=prefixes['data'],
-            data_id_prefix=prefixes['data.id'],
+            data_id_prefix=prefixes['anon.id'],
             json2rdf_options = {},
             additional_params = {},
             null_values = {},
@@ -26,7 +26,9 @@ class Table(BaseMeta):
         self.name = name if name else str(id(df))
         self.data_prefix = data_prefix
         self.data_id_prefix = data_id_prefix
-        self.json2rdf_options = json2rdf_options
+        from .json import json2rdf_unique_options
+        self.json2rdf_options = {**json2rdf_unique_options,
+            **json2rdf_options}  #can override
         self.additional_params = additional_params
         self.null_values = null_values
 
@@ -43,10 +45,9 @@ class Table(BaseMeta):
     def data(self, db):
         _ = db
         _ = self.df()
-        _ = _.to_json(orient='records')
+        _ = _.to_json(orient='table')
         from json2rdf import json2rdf as j2r
         _ = j2r(_,
-                subject_id_keys = {}, # the id is the row number
                 key_prefix = ('data', self.data_prefix),
                 id_prefix= ('data.id',self.data_id_prefix ),
                 **self.json2rdf_options)
@@ -57,16 +58,16 @@ class Table(BaseMeta):
     def params(self):
         return {
             'name': self.name,
-            **self.additional_params,
-                 }
-        
+            **self.additional_params,}
+
+
 
 class CSVReader(BaseMeta):
     from ..prefixes import prefixes
     def __init__(self, path: paths.type.csv,
             reading_args: dict = {},
             data_prefix=prefixes['data'],
-            data_id_prefix=prefixes['data.id'],
+            data_id_prefix=prefixes['anon.id'],
             json2rdf_options = {},
             additional_params = {},
             null_values = {},
@@ -102,7 +103,7 @@ class ExcelReader(BaseMeta):
     def __init__(self, path: paths.type.xl,
             reading_args: dict = {},
             data_prefix=prefixes['data'],
-            data_id_prefix=prefixes['data.id'],
+            data_id_prefix=prefixes['anon.id'],
             json2rdf_options = {},
             additional_params = {},
             null_values = {},
