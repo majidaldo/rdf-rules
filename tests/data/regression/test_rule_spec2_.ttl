@@ -8,14 +8,14 @@
 [] a rdf:Statement ;
     rdf:object <http://example.com/Adult> ;
     rdf:predicate rdf:type ;
-    rdf:subject <http://example.com/alice> ;
+    rdf:subject <http://example.com/bob> ;
     ns1:ontology "data/test-ontology.ttl" ;
-    ns1:tqmode "inference" .
+    ns1:shaclmode "inference" .
 
 [] a rdf:Statement ;
     rdf:object <http://example.com/Adult> ;
     rdf:predicate rdf:type ;
-    rdf:subject <http://example.com/bob> ;
+    rdf:subject <http://example.com/alice> ;
     ns1:ontology "data/test-ontology.ttl" ;
-    ns1:tqmode "inference" .
+    ns1:shaclmode "inference" .
 

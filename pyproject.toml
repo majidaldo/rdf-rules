@@ -1,6 +1,6 @@
 [project]
 name = "rdf-rules"
-version = "2026.8.73"
+version = "2026.9.74"
 description = "Create RDF data "
 readme = "README.md"
 authors = [
@@ -19,18 +19,16 @@ dependencies = [
     # sparql
     'pyoxigraph',
     # inference & validation
-    'pytqshacl[java]',
+    'pyshifty',
 ]
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
     'fire',
     # testing
         'rdflib', 
         'pytest', 'pytest-regressions',
-    'pytqshacl[cli]',
     'marimo',
     ]
-
 
 
 [build-system]

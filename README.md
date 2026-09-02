@@ -2,7 +2,7 @@ A slightly opinionated, common set of 'rules'
 for creating rdf data using '[rdf-engine](https://github.com/pnnl/rdf-engine)':
 * **Data Rules**: for loading tables (csv), hierarchical (json), and rdf (ttl).
 * **Mapping rule**: SPARQL construct
-* **Ontology rules**: Inference and validation using TopQuadrant
+* **Ontology rules**: Inference and validation using [Shifty](https://shifty.gtf.fyi/)
 
 These rules come together in the 'engine'.
 

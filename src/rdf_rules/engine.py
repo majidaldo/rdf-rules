@@ -77,7 +77,7 @@ def run(*, db = Store(),
 
     def log(msg):
         if log_print:
-            sep = '='*5
+            sep = '='*5 if 'conform' not in msg else ''
             from loguru import logger
             logger.info(sep+' '+msg)
 
@@ -114,6 +114,7 @@ def run(*, db = Store(),
         engine = Engine(db=db,  rules=_, derand=False, MAX_NCYCLES=1, **logging)
         log('VALIDATING')
         db = engine.run1()
+        log('conforms' if engine.rules[0].conforms else 'does not conform')
     
     return db
 

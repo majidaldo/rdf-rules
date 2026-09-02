@@ -98,7 +98,7 @@ def test_rule(spec, file_regression):
     p, kw = spec
     r = rule.make(p, **kw)
 
-    if isinstance(r, orr.TopQuadrant):
+    if isinstance(r, orr.Shifty):
         s = Store()
         # using fakedata.mapping.rq to mark mapped data
         _ = rr.TTLReader(data_dir / 'test.ttl', additional_params={'path': 'fakedata.mapping.rq' } )
@@ -131,7 +131,7 @@ def test_engine(remove_null):
         rules=[(data_dir / 'test.ttl', {'additional_params': {'path': 'fakedata.mapping.rq' } } ) ],
         )
 
-    wonulls, nulls = 475, 1014
+    wonulls, nulls = 475, 889
     assert(wonulls < nulls)
     if remove_null == True:
         assert(len(db) == wonulls) # good enough i guess b/c i tested rules separately

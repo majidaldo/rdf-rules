@@ -19,7 +19,7 @@ where {{
 # inferred data
 union
 {{
-        << ?s ?p ?o>> meta:tqmode "inference".
+        << ?s ?p ?o>> meta:shaclmode "inference".
     }}
 }}
 """
@@ -31,7 +31,7 @@ prefix meta:<{p['meta']}>
 construct {{?s ?p ?o}}
 where {{
 {{
-<< ?s ?p ?o>> meta:tqmode "validation".
+<< ?s ?p ?o>> meta:shaclmode "validation".
 }}
 }}
 """

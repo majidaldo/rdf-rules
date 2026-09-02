@@ -192,15 +192,6 @@ wheels = [
 ]
 
 [[package]]
-name = "install-jdk"
-version = "1.1.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/cf/67/502a753533e9b4deb691f3f7ba6303682494f2d8ee651d6253cd78045b66/install_jdk-1.1.0.tar.gz", hash = "sha256:2bfd53caf660e4916df0215a5715519dcb9547fa2a5f07421fd97a8046851eaa", size = 15181, upload-time = "2023-07-21T01:18:36.591Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/7e/5e/af84054b0ff9f9fbe49a7079d46ba8b4ee7ab6192a0310d4bd2c91254626/install_jdk-1.1.0-py3-none-any.whl", hash = "sha256:b63f0fcd63f7abab3443d4120ba92716397753b8a8ea3c85762a629925a9936e", size = 15648, upload-time = "2023-07-21T01:18:35.501Z" },
-]
-
-[[package]]
 name = "itsdangerous"
 version = "2.2.0"
 source = { registry = "https://pypi.org/simple" }
@@ -295,7 +286,7 @@ wheels = [
 
 [[package]]
 name = "marimo"
-version = "0.23.14"
+version = "0.24.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "click", marker = "sys_platform != 'emscripten'" },
@@ -318,9 +309,9 @@ dependencies = [
     { name = "uvicorn", marker = "sys_platform != 'emscripten'" },
     { name = "websockets", marker = "sys_platform != 'emscripten'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/9a/33/b60febb3f7e44658fc0c4b59e04ba9071e01f4186235d9dd1864e7efba72/marimo-0.23.14.tar.gz", hash = "sha256:f33f17abb5106edabf6921d016d91a6d8f02b4d1b0ed599039957b8f7f5b9489", size = 38705304, upload-time = "2026-07-10T20:01:01.646Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/36/e0/70c18b2862d9a439c811cf2e5bf0aef2b9d0cc7ac72beb2ba6eea9a9a055/marimo-0.24.0.tar.gz", hash = "sha256:30aaeae5a5936df524814fddd98f4b260d3068f97df2611d252fe4b253f3fb80", size = 39054161, upload-time = "2026-08-17T21:30:18.072Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/55/ea/898058b213ed79555cf4fde8f59fcb2c257c888dcbc351e0670d3a0b632d/marimo-0.23.14-py3-none-any.whl", hash = "sha256:c93a25ab3ae928f06d2d9855c8b582836485ad9af4d038de2eac8d028af837ee", size = 39160204, upload-time = "2026-07-10T20:00:58.325Z" },
+    { url = "https://files.pythonhosted.org/packages/2c/8b/3899b23020f5e43c7357171712b14b774434cb6b1a285f5678cc1234013a/marimo-0.24.0-py3-none-any.whl", hash = "sha256:a5470207ac4c228ee7c2c16f820b0ca1cdf58ec4b51074aca1a5c997422ae90a", size = 39517936, upload-time = "2026-08-17T21:30:13.832Z" },
 ]
 
 [[package]]
@@ -630,6 +621,20 @@ wheels = [
 ]
 
 [[package]]
+name = "pyshifty"
+version = "0.4.3"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/c3/16/6988376bc587bc730f205fa1457f2380137aabda8e5494f47dc3b074cb54/pyshifty-0.4.3.tar.gz", hash = "sha256:101d63de542d9358281ab5becc2bdd2e679e78dcdfffffe7e5113bf224aaf762", size = 472403, upload-time = "2026-09-01T18:24:00.022Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/41/7a/6a08bed562605758d4b1864314f7ce52e468b0643897780a9c69a1f49a2c/pyshifty-0.4.3-cp39-abi3-macosx_11_0_arm64.whl", hash = "sha256:4a6bdc57496c5ce5dc196602102f43d9d013aab80f5f3189e3070cbf5452d12b", size = 4012682, upload-time = "2026-09-01T18:23:44.218Z" },
+    { url = "https://files.pythonhosted.org/packages/ab/41/bec7637712addb5d8faabdf15ae44e1e7c64d013d3e01c2dda0b29035f02/pyshifty-0.4.3-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:89e9e573af76995fa20b70c89f666ea5e0fb66c253b782c6a8fb4ddda5c91858", size = 41352267, upload-time = "2026-09-01T18:23:46.522Z" },
+    { url = "https://files.pythonhosted.org/packages/87/30/47a6eb1da3babc8179560b14d5f409f7ed6127345c68376dea017f4729c4/pyshifty-0.4.3-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:2373b55ab9b7498514cad71cf598e0ec757324e05876111738701ef469448f66", size = 41872627, upload-time = "2026-09-01T18:23:49.534Z" },
+    { url = "https://files.pythonhosted.org/packages/04/e8/13d4fee5033f004a011b83e71d9244e9bfb5bb49b589eaceb28ec9a371ec/pyshifty-0.4.3-cp39-abi3-musllinux_1_2_aarch64.whl", hash = "sha256:21062399ed44053db93f1985d465773bfc6c90dfe6cbc47a665887251f354708", size = 41302745, upload-time = "2026-09-01T18:23:52.594Z" },
+    { url = "https://files.pythonhosted.org/packages/f7/66/7f7b7d344acf1dfac7cb8cd66eff78ea7845899275daf587b448389bd642/pyshifty-0.4.3-cp39-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:0ec264aa7a068290ebffabdde43c9741abebc61ac237ddc509614f3fe106210a", size = 41909377, upload-time = "2026-09-01T18:23:55.677Z" },
+    { url = "https://files.pythonhosted.org/packages/53/01/4023619b298dff454257a6d5237fef997f496c2309a58ca4eb701764c362/pyshifty-0.4.3-cp39-abi3-win_amd64.whl", hash = "sha256:fcd530bd867fd8b74b791c78ff5f7e4cd7281ae913412affa2b9febe92171dd9", size = 3828307, upload-time = "2026-09-01T18:23:58.506Z" },
+]
+
+[[package]]
 name = "pytest"
 version = "9.1.1"
 source = { registry = "https://pypi.org/simple" }
@@ -690,23 +695,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/5b/42/55c32bb9b12693c092ad250a0e82edb5b31ddeda6eb772de5f308b3804ad/python_multipart-0.0.32.tar.gz", hash = "sha256:be54b7f3fa167bb83e4fcd936b887b708f4e57fe75911c02aebf53efaf8d938e", size = 46881, upload-time = "2026-06-04T16:18:58.647Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/e1/04/e8135ebd1ad02c56ec633277529b2602ff99ff634be76cdba5744cf554fd/python_multipart-0.0.32-py3-none-any.whl", hash = "sha256:ff6d3f776f16878c894e52e107296ffc890e913c611b1a4ec6c44e2821fe2e23", size = 30042, upload-time = "2026-06-04T16:18:57.319Z" },
-]
-
-[[package]]
-name = "pytqshacl"
-version = "143"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/7f/ac/538eb0b09ca279268f5bb49f39b9443d239de86aeaf466cf1fe6d0b32b32/pytqshacl-143.tar.gz", hash = "sha256:55a417a159216cfe704b16ab24f24b407e47b642471893d931f00f654980dd9b", size = 16165534, upload-time = "2026-06-16T15:35:51.934Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/cf/c6/b12779741af75afb1e1eae0698a97fc8db3d5a282e86186e2c750bc8e327/pytqshacl-143-py2.py3-none-any.whl", hash = "sha256:7a077732fb8f5e00f634068526253b076e00a15aecf21b64af39da59b32f0e39", size = 16175590, upload-time = "2026-06-16T15:35:49.314Z" },
-]
-
-[package.optional-dependencies]
-cli = [
-    { name = "fire" },
-]
-java = [
-    { name = "install-jdk" },
 ]
 
 [[package]]
@@ -804,7 +792,7 @@ wheels = [
 
 [[package]]
 name = "rdf-rules"
-version = "2026.8.73"
+version = "2026.9.74"
 source = { editable = "." }
 dependencies = [
     { name = "beartype" },
@@ -814,41 +802,42 @@ dependencies = [
     { name = "pandas" },
     { name = "plum" },
     { name = "pyoxigraph" },
-    { name = "pytqshacl", extra = ["java"] },
+    { name = "pyshifty" },
     { name = "rdf-engine" },
     { name = "uritools" },
 ]
 
-[package.optional-dependencies]
+[package.dev-dependencies]
 dev = [
     { name = "fire" },
     { name = "marimo" },
     { name = "pytest" },
     { name = "pytest-regressions" },
-    { name = "pytqshacl", extra = ["cli"] },
     { name = "rdflib" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "beartype" },
-    { name = "fire", marker = "extra == 'dev'" },
     { name = "json2rdf" },
     { name = "loguru" },
-    { name = "marimo", marker = "extra == 'dev'" },
     { name = "openpyxl" },
     { name = "pandas" },
     { name = "plum" },
     { name = "pyoxigraph" },
-    { name = "pytest", marker = "extra == 'dev'" },
-    { name = "pytest-regressions", marker = "extra == 'dev'" },
-    { name = "pytqshacl", extras = ["cli"], marker = "extra == 'dev'" },
-    { name = "pytqshacl", extras = ["java"] },
+    { name = "pyshifty" },
     { name = "rdf-engine" },
-    { name = "rdflib", marker = "extra == 'dev'" },
     { name = "uritools" },
 ]
-provides-extras = ["dev"]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "fire" },
+    { name = "marimo" },
+    { name = "pytest" },
+    { name = "pytest-regressions" },
+    { name = "rdflib" },
+]
 
 [[package]]
 name = "rdflib"

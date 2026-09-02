@@ -53,8 +53,8 @@ class Maker:
 
     from . import ontology as orr
     @dispatch
-    def make(self, ontology: orr.types.path.type, mode: orr.types.modes, **options) -> orr.TopQuadrant:
-        return self.orr.TopQuadrant(mode, ontology, **options)
+    def make(self, ontology: orr.types.path.type, mode: orr.types.modes, **options) -> orr.Shifty:
+        return self.orr.Shifty(mode, ontology, **options)
 
     @dispatch
     def make(self, p: tuple, **options):

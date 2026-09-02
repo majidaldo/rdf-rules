@@ -1,7 +1,6 @@
 # no need to load in data
 from pathlib import Path
 
-
 class types:
     class path:
         from typing import Annotated
@@ -13,7 +12,7 @@ class types:
 
 from pyoxigraph import Store
 from .base import BaseMeta
-class TopQuadrant(BaseMeta):
+class Shifty(BaseMeta):
     def __init__(self, 
             mode: types.modes,
             ontology: types.path.type = Path('ontology'),
@@ -25,59 +24,35 @@ class TopQuadrant(BaseMeta):
 
     def params(self):
         return {
-            'tqmode':   self.mode,
+            'shaclmode':  self.mode,
             'ontology': self.ontology.as_posix(),
                 **self.additional_params }
     
     def data(self, db: Store):
-        _ = self.source_query
-        _ = db.query(_)
-        tmp = Path('tq.tmp.ttl')
-        if tmp.exists(): tmp.unlink()
-        from pyoxigraph import serialize, RdfFormat
-        from .prefixes import prefixes
-        s = serialize(_,
-            prefixes=prefixes,
-            output=tmp, format=RdfFormat.TURTLE)
+        from .queries import mapped_and_inferred
+        d = db.query(mapped_and_inferred)
+        from pyoxigraph import serialize, parse, RdfFormat
+        # to get the diff, bc shifty doesn't give it out
+        if self.mode == 'inference': d = frozenset(d)
+        _ = serialize(d,
+                format=RdfFormat.TURTLE)
         if self.mode == 'inference':
-            from pytqshacl.run import infer
-            _ = infer(tmp)
+            from shifty import infer
+            _ = infer(_, self.ontology)
+            # quads out
+            _ = parse(_.graph_ntriples, format=RdfFormat.N_TRIPLES)
+            _ = (q.triple for q in _)
+            _ = frozenset(_) - frozenset(d)
         else:
             assert(self.mode == 'validation')
-            from pytqshacl.run import validate
-            _ = validate(tmp)
-        tmp.unlink()
-        from pyoxigraph import parse, RdfFormat
-        _ = parse(_.stdout, format=RdfFormat.TURTLE)
+            from shifty import validate
+            conforms, report_graph, results_text = \
+                validate(_, self.ontology,
+                    infer=False,
+                    sort_results=False,)
+            _ = report_graph.serialize()  # why this rdflib graph?!
+            self.conforms = conforms
+            _ = parse(_, format=RdfFormat.TURTLE)
+            _ = (q.triple for q in _)
         yield from _
 
-    from functools import cached_property
-    @cached_property
-    def source_query(self):
-        from .prefixes import prefixes as p
-        _ = f"""
-        prefix meta:<{p['meta']}>
-        construct {{?s ?p ?o}}
-        where {{
-        # ontology
-        {{
-            << ?s ?p ?o>> meta:path ?pth.
-            FILTER(lcase(STR(?pth)) = "{self.ontology.as_posix()}"  )
-            }}
-        # mapped data
-        union
-        {{
-            << ?s ?p ?o>> meta:path ?pth.
-            FILTER(STRENDS(lcase(STR(?pth)), ".mapping.rq") || STRENDS(lcase(STR(?pth)), ".mapping.sparql") )
-            }}
-        # inferred data
-        union
-        {{
-                << ?s ?p ?o>> meta:tqmode "inference".
-            }}
-        }}
-        """
-        _ = _.split('\n')
-        _ = (l.strip() for l in _)
-        _ = '\n'.join(_)
-        return _
