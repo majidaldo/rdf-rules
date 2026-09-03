@@ -41,11 +41,12 @@ validation = align(_)
 from pyoxigraph import Store
 def query(db: Store, query: str):
     """small convenience"""
-    if query in locals():
-        q = locals()[query]
+    if query in globals():
+        q = globals()[query]
     else:
         q = query
     _ = db.query(q)
     return _
 
 del _
+del align

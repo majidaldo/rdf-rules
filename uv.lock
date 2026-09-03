@@ -792,7 +792,7 @@ wheels = [
 
 [[package]]
 name = "rdf-rules"
-version = "2026.9.74"
+version = "2026.9.75"
 source = { editable = "." }
 dependencies = [
     { name = "beartype" },
