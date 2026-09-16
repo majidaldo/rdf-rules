@@ -7,11 +7,16 @@ for creating rdf data using '[rdf-engine](https://github.com/pnnl/rdf-engine)':
 These rules come together in the 'engine'.
 
 # Development
+
+History/context:
+This framework is a generalization of [BIM2RDF](https://github.com/pnnl/BIM2RDF).
+
 Develop with `uv sync --all-packages --all-extras`.
 
 Run `python tasks.py stamp_ver` before pypi publishing.
 
 # Design Choices
+
 These are choices given the common use case of mapping data to an ontology.
 They are somewhat firm.
 - RDF1.2 annotates tripes with metadata as `<<?s ?p ?o>> ?mp ?mo `
