@@ -37,7 +37,7 @@ def mkrule(a: tuple | Any,
     return _
 
 
-def run(*, db = Store(),
+def run(*, db: Store | None = None,
          data_rules: list = [],
          rules: list = [],
          ontologies: list[otypes.path.type] = [],
@@ -73,6 +73,7 @@ def run(*, db = Store(),
         This is applied to `data_rules` (but not RDF readers).
     
     """
+    if db is None: db = Store()
     logging = {'log_print': log_print}
 
     def log(msg):
