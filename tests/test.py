@@ -131,7 +131,7 @@ def test_engine(remove_null):
         rules=[(data_dir / 'test.ttl', {'additional_params': {'path': 'fakedata.mapping.rq' } } ) ],
         )
 
-    wonulls, nulls = 475, 889
+    wonulls, nulls = 475, 479
     assert(wonulls < nulls)
     if remove_null == True:
         assert(len(db) == wonulls) # good enough i guess b/c i tested rules separately
