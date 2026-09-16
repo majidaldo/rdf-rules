@@ -15,7 +15,7 @@ from .base import BaseMeta
 class Shifty(BaseMeta):
     def __init__(self, 
             mode: types.modes,
-            ontology: types.path.type = Path('ontology'),
+            ontology: types.path.type = Path('ontology.ttl'),
             additional_params = {},
                    ) -> None:
         self.mode = mode
